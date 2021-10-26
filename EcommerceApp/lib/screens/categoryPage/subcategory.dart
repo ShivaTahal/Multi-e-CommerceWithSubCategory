@@ -1,5 +1,8 @@
 import 'package:ecommerece_velocity_app/models/category.dart';
+import 'package:ecommerece_velocity_app/models/subcategory.dart';
 import 'package:flutter/material.dart';
+
+import 'detailspage.dart';
 
 class SelectedCategoryPage extends StatelessWidget {
   Category selectedCategory;
@@ -36,7 +39,14 @@ class SelectedCategoryPage extends StatelessWidget {
                 (index) {
               return GestureDetector(
                 onTap: () {
-                  // to do for details of the product here
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => DetailsPage(
+                            subCategory: this
+                                .selectedCategory
+                                .subCategories[index] as SubCategory),
+                      ));
                 },
                 child: Container(
                   child: Column(
